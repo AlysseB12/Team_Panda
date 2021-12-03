@@ -6,4 +6,4 @@ Hello Jack and Jake
 
 Hello both 
 
-Hello mysterious strangers!!
+Hello mysterious strangers!
