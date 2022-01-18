@@ -1,0 +1,20 @@
+﻿@page
+@model Hotel_Advisor.Pages.MapModel
+@{
+    ViewData["Title"] = "Map Page";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/cssmap/cssmap-continents.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/cssmap/jquery.cssmap.min.js"></script>
+    <script type="text/javascript">$(document).ready(() => $("#map-continents").CSSMap({ "size": 1450, "mapStyle": "blue" }));</script>
+}
+
+<div id="map-continents">
+ <ul class="continents">
+  <li class="c6"><a asp-page="/Map/South-America">South America</a></li>
+ </ul>
+</div>
