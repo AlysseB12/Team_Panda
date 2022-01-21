@@ -8,7 +8,7 @@ namespace Hotel_Advisor.Models
         public int CountryID { get; set; }
         public Country Country { get; set; }
         public string UserID { get; set; }
-        public IdentityUser User { get; set; }
+        public ApplicationUser User { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
