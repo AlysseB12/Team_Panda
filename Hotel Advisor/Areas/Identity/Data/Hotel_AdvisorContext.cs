@@ -1,11 +1,10 @@
 ﻿using Hotel_Advisor.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hotel_Advisor.Data;
 
-public class Hotel_AdvisorContext : IdentityDbContext<IdentityUser>
+public class Hotel_AdvisorContext : IdentityDbContext<ApplicationUser>
 {
     public Hotel_AdvisorContext(DbContextOptions<Hotel_AdvisorContext> options)
         : base(options)

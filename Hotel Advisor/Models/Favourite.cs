@@ -8,7 +8,7 @@ namespace Hotel_Advisor.Models
         public int HotelID { get; set; }
         public Hotel Hotel { get; set; }
         public string UserID { get; set; }
-        public IdentityUser User { get; set; }
+        public ApplicationUser User { get; set; }
 
     }
 }

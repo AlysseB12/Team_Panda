@@ -8,7 +8,7 @@ namespace Hotel_Advisor.Models
         public int ReviewID { get; set; }
         public Review Review { get; set; }
         public string UserID { get; set; }
-        public IdentityUser User { get; set; }
+        public ApplicationUser User { get; set; }
         public DateTime DateCreated { get; set; } 
 
     }
