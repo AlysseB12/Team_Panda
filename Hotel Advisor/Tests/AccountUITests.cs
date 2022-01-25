@@ -44,7 +44,7 @@ namespace Hotel_Advisor.Tests
                 .SendKeys(username.ToString());
 
             driver.FindElement(By.Id("Input_Email"))
-                .SendKeys("Jack@test.co.uk");
+                .SendKeys(username.ToString() + "@test.co.uk");
 
             driver.FindElement(By.Id("Input_Password"))
                 .SendKeys("Advisor-2022");
