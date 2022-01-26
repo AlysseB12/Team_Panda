@@ -12,6 +12,7 @@ namespace Hotel_Advisor.Tests
 
         public void Dispose()
         {
+            driver.Quit();
         }
 
         [Fact]
