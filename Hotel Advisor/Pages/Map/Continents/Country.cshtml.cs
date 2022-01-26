@@ -1,6 +1,7 @@
 using Hotel_Advisor.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hotel_Advisor.Pages.Map
 {
@@ -14,15 +15,13 @@ namespace Hotel_Advisor.Pages.Map
         }
 
         public IList<Hotel> Hotels { get; set; }
-        public Continent? Continent { get; set; }
         public Country? Country { get; set; }
 
-        public IActionResult OnGet(int continentId, int countryId)
+        public async Task<IActionResult> OnGetAsync(int continentId, int countryId)
         {
-            Continent = _context.Continents.FirstOrDefault(c => c.ID == continentId);
-            Country = _context.Countries.FirstOrDefault(c => c.ID == countryId);
+            Country = await _context.Countries.Where(c => c.ID == countryId).Include(c => c.Continent).FirstOrDefaultAsync();
 
-            if (Continent == null || Country == null)
+            if (Country == null)
             {
                 return NotFound();
             }

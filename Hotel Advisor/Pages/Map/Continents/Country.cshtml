@@ -2,7 +2,7 @@
 @model Hotel_Advisor.Pages.Map.CountryModel
 @{
     ViewData["Title"] = this.Model.Country.Name;
-    var continentTag = this.Model.Continent.Name.ToLower().Replace(" ", "-");
+    var continentTag = this.Model.Country.Continent.Name.ToLower().Replace(" ", "-");
     var countryTag = $"sam{this.Model.Country.ID}";
 }
 
@@ -19,7 +19,7 @@
     <div id="map-@continentTag" class="m-0">
         <ul class="@continentTag">
             <li class="@countryTag">
-                <a href="/Map/@this.Model.Continent.ID/@this.Model.Country.ID">@this.Model.Country.Name</a>
+                <a href="/Map/@this.Model.Country.Continent.ID/@this.Model.Country.ID">@this.Model.Country.Name</a>
             </li>
         </ul>
     </div>
