@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hotel_Advisor.Pages;
 
-public class PrivacyModel : PageModel
+public class FavouritesModel : PageModel
 {
-    private readonly ILogger<PrivacyModel> _logger;
+    private readonly ILogger<FavouritesModel> _logger;
 
-    public PrivacyModel(ILogger<PrivacyModel> logger)
+    public FavouritesModel(ILogger<FavouritesModel> logger)
     {
         _logger = logger;
     }
