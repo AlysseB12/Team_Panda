@@ -7,7 +7,12 @@ var connectionString = builder.Configuration.GetConnectionString("Hotel_AdvisorC
     options.UseSqlServer(connectionString));builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Hotel_AdvisorContext>();
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AddPageRoute("/Map/Continents/Index", "/Map/{continentId}");
+    options.Conventions.AddPageRoute("/Map/Continents/Country", "/Map/{continentId}/{countryId}");
+    options.Conventions.AddPageRoute("/Hotels/Details", "/Hotels/{hotelId}");
+});
 
 var app = builder.Build();
 
