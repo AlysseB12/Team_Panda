@@ -15,10 +15,13 @@
     <script type="text/javascript">$(document).ready(() => $("#map-@continentTag").CSSMap({ "size": 430, "mapStyle": "blue", "activateOnLoad": ["@countryTag"] }));</script>
 }
 
-<div id="map-@continentTag">
-    <ul class="@continentTag">
-        <li class="@countryTag">
-            <a href="/Map/@this.Model.Continent.ID/@this.Model.Country.ID">@this.Model.Country.Name</a>
-        </li>
-    </ul>
+<div class="flex-col justify-content-center align-items-center">
+    <div id="map-@continentTag" class="m-0">
+        <ul class="@continentTag">
+            <li class="@countryTag">
+                <a href="/Map/@this.Model.Continent.ID/@this.Model.Country.ID">@this.Model.Country.Name</a>
+            </li>
+        </ul>
+    </div>
+    <div class="border border-3 rounded h-100 hotels-box"></div>
 </div>
