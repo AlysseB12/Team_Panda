@@ -1,10 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Hotel_Advisor.Data;
 using Hotel_Advisor.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+using Hotel_Advisor.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Hotel_AdvisorContextConnection");builder.Services.AddDbContext<Hotel_AdvisorContext>(options =>
-    options.UseSqlServer(connectionString));builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    options.UseSqlServer(connectionString));builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => options.SignIn.RequireConfirmedAccount = true).AddDefaultUI()
     .AddEntityFrameworkStores<Hotel_AdvisorContext>();
 // Add services to the container.
 builder.Services.AddRazorPages();

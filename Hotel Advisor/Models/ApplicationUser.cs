@@ -2,7 +2,7 @@
 
 namespace Hotel_Advisor.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser 
     {
         public ICollection<Hotel> Hotels { get; set; }
         public ICollection<Favourite> Favourites { get; set; }

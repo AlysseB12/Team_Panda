@@ -1,10 +1,12 @@
 ﻿using Hotel_Advisor.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Hotel_Advisor.Data;
 
-public class Hotel_AdvisorContext : IdentityDbContext<ApplicationUser>
+public class Hotel_AdvisorContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
 {
     public Hotel_AdvisorContext(DbContextOptions<Hotel_AdvisorContext> options)
         : base(options)
@@ -17,6 +19,8 @@ public class Hotel_AdvisorContext : IdentityDbContext<ApplicationUser>
     public DbSet<Favourite> Favourites { get; set; }
     public DbSet<Review> Reviews { get; set; }
     public DbSet<ReviewLike> ReviewLikes { get; set; }
+        
+    
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -27,6 +31,8 @@ public class Hotel_AdvisorContext : IdentityDbContext<ApplicationUser>
         builder.Entity<Favourite>().ToTable(nameof(Favourite));
         builder.Entity<Review>().ToTable(nameof(Review));
         builder.Entity<ReviewLike>().ToTable(nameof(ReviewLike));
+        
+        
 
         builder.Entity<Favourite>().HasOne(h=>h.Hotel).WithMany().OnDelete(DeleteBehavior.NoAction);
         builder.Entity<Hotel>().HasMany(h => h.Reviews).WithOne(f => f.Hotel).OnDelete(DeleteBehavior.NoAction);

@@ -4,7 +4,7 @@ namespace Hotel_Advisor.Areas.Identity.Data
 {
     public class DbInitializer
     {
-        public static void Initialize(Hotel_Advisor.Data.Hotel_AdvisorContext context)
+        public static async void Initialize(Hotel_Advisor.Data.Hotel_AdvisorContext context)
         {
             if (context.Continents.Any())
             {
@@ -46,6 +46,18 @@ namespace Hotel_Advisor.Areas.Identity.Data
 
             context.Countries.AddRange(Countries);
             context.SaveChanges();
+
+            var Roles = new ApplicationRole[]
+            {
+                    new ApplicationRole {RoleID=1, Type = Hotel_Advisor.Models.Roles.Admin},
+                    new ApplicationRole {RoleID=2, Type = Hotel_Advisor.Models.Roles.Premium},
+                    new ApplicationRole {RoleID=3, Type = Hotel_Advisor.Models.Roles.Standard}
+
+            };
+
+            context.Roles.AddRange(Roles);
+            context.SaveChanges();
+
 
             var Users = new ApplicationUser[]
             {

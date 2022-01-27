@@ -10,6 +10,11 @@
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="d-flex flex-column h-100 justify-content-around">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
+                <div class="form-group">
+                    <select asp-for="Input.Role" class= selectpicker form-control"> <option value ="Premium">Premium</option> <option value ="Standard">Standard</option>  </select>
+                    <label asp-for="Input.Role"></label>  
+                    <span asp-validation-for="Input.Role" class="text-danger"></span>
+                </div>
                 <div class="form-floating mb-2">
                     <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true" />
                     <label asp-for="Input.Username"></label>
