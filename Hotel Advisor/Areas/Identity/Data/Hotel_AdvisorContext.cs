@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hotel_Advisor.Data;
 
-public class Hotel_AdvisorContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+public class Hotel_AdvisorContext : IdentityDbContext<ApplicationUser>
 {
     public Hotel_AdvisorContext(DbContextOptions<Hotel_AdvisorContext> options)
         : base(options)
@@ -31,8 +31,6 @@ public class Hotel_AdvisorContext : IdentityDbContext<ApplicationUser, Applicati
         builder.Entity<Favourite>().ToTable(nameof(Favourite));
         builder.Entity<Review>().ToTable(nameof(Review));
         builder.Entity<ReviewLike>().ToTable(nameof(ReviewLike));
-        
-        
 
         builder.Entity<Favourite>().HasOne(h=>h.Hotel).WithMany().OnDelete(DeleteBehavior.NoAction);
         builder.Entity<Hotel>().HasMany(h => h.Reviews).WithOne(f => f.Hotel).OnDelete(DeleteBehavior.NoAction);
