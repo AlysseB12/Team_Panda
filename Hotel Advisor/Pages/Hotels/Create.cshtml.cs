@@ -1,16 +1,13 @@
 ﻿#nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Hotel_Advisor.Data;
 using Hotel_Advisor.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Hotel_Advisor
 {
+    [Authorize(Roles = "Owner")]
     public class CreateModel : PageModel
     {
         private readonly Hotel_Advisor.Data.Hotel_AdvisorContext _context;

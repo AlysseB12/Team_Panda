@@ -1,4 +1,5 @@
 ﻿using Hotel_Advisor.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +18,7 @@ public class Hotel_AdvisorContext : IdentityDbContext<ApplicationUser>
     public DbSet<Favourite> Favourites { get; set; }
     public DbSet<Review> Reviews { get; set; }
     public DbSet<ReviewLike> ReviewLikes { get; set; }
-
+        
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

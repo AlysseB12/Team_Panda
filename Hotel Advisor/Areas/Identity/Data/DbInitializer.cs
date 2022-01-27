@@ -1,11 +1,23 @@
 ﻿using Hotel_Advisor.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Hotel_Advisor.Areas.Identity.Data
 {
     public class DbInitializer
     {
-        public static void Initialize(Hotel_Advisor.Data.Hotel_AdvisorContext context)
+        public static async Task Initialize(Hotel_Advisor.Data.Hotel_AdvisorContext context, IServiceProvider services)
         {
+            RoleManager<IdentityRole> roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+            string[] roles = { "Standard", "Owner" };
+            foreach (var role in roles)
+            {
+                if (!await roleManager.RoleExistsAsync(role))
+                {
+                    await roleManager.CreateAsync(new IdentityRole(role));
+                }
+            }
+
             if (context.Continents.Any())
             {
                 return;
@@ -47,30 +59,30 @@ namespace Hotel_Advisor.Areas.Identity.Data
             context.Countries.AddRange(Countries);
             context.SaveChanges();
 
-            var Users = new ApplicationUser[]
+            var User = new ApplicationUser
             {
-                new ApplicationUser
-                {
-                    Id = "a93f6a42-1b45-4e9b-805c-ae73b79d6cd3",
-                    UserName = "alysse@test.co.uk",
-                    NormalizedUserName = "ALYSSE@TEST.CO.UK",   
-                    Email = "alysse@test.co.uk",
-                    NormalizedEmail = "ALYSSE@TEST.CO.UK",
-                    EmailConfirmed = true,
-                    PasswordHash = "AQAAAAEAACcQAAAAEBAZn/GfonIhwSZZ71auZYdYMN4s9XvQ7YebAfA5z0cUxrFqv9I5VBaJt6Qii2Wydg==",
-                    SecurityStamp = "7I5DE4E3QOUWDI6VDWTYC76RXK2VO3GD",
-                    ConcurrencyStamp = "6b6459d7-9dab-480f-a4f1-90a673b33dc7",
-                    PhoneNumber = null,
-                    PhoneNumberConfirmed= false,
-                    TwoFactorEnabled = false,
-                    LockoutEnd = null,
-                    LockoutEnabled = true,
-                    AccessFailedCount = 0
-                }
+                Id = "a93f6a42-1b45-4e9b-805c-ae73b79d6cd3",
+                UserName = "alysse@test.co.uk",
+                NormalizedUserName = "ALYSSE@TEST.CO.UK",
+                Email = "alysse@test.co.uk",
+                NormalizedEmail = "ALYSSE@TEST.CO.UK",
+                EmailConfirmed = true,
+                PasswordHash = "AQAAAAEAACcQAAAAEBAZn/GfonIhwSZZ71auZYdYMN4s9XvQ7YebAfA5z0cUxrFqv9I5VBaJt6Qii2Wydg==",
+                SecurityStamp = "7I5DE4E3QOUWDI6VDWTYC76RXK2VO3GD",
+                ConcurrencyStamp = "6b6459d7-9dab-480f-a4f1-90a673b33dc7",
+                PhoneNumber = null,
+                PhoneNumberConfirmed = false,
+                TwoFactorEnabled = false,
+                LockoutEnd = null,
+                LockoutEnabled = true,
+                AccessFailedCount = 0
             };
 
-            context.Users.AddRange(Users);
+            context.Users.Add(User);
             context.SaveChanges();
+
+            UserManager<ApplicationUser> userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+            await userManager.AddToRoleAsync(User, "Owner");
 
             var Hotels = new Hotel[]
             {
