@@ -4,10 +4,27 @@ html {
     min-height: 100%;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.hotels-box {
+    width: 90%
+}
+
+@media (min-width: 1200px) {
+    html {
+        font-size: 16px;
+    }
+
+    .flex-col {
+        flex-direction: row;
+    }
+
+    .hotels-box {
+        width: 30%
+    }
 }
 
 body {

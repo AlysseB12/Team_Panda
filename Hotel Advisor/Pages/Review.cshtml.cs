@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Hotel_Advisor.Pages.Map
+namespace Hotel_Advisor.Pages
 {
-    public class South_AmericaModel : PageModel
+    public class ReviewModel : PageModel
     {
         public void OnGet()
         {

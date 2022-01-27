@@ -22,21 +22,17 @@ namespace Hotel_Advisor
 
         public Hotel Hotel { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int hotelId)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             Hotel = await _context.Hotels
                 .Include(h => h.Country)
-                .Include(h => h.User).FirstOrDefaultAsync(m => m.ID == id);
+                .Include(h => h.User).FirstOrDefaultAsync(m => m.ID == hotelId);
 
             if (Hotel == null)
             {
                 return NotFound();
             }
+
             return Page();
         }
     }

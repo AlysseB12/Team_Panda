@@ -45,14 +45,14 @@ namespace Hotel_Advisor.Areas.Identity.Data
                     new Country{ContinentID=6, Name="Chile" , CountryCode="CL"},
                     new Country{ContinentID=6, Name="Colombia" , CountryCode="CO"},
                     new Country{ContinentID=6, Name="Ecuador" , CountryCode="EC"},
-                    new Country{ContinentID=6, Name="Falkland Islands" , CountryCode="FK"},
-                    new Country{ContinentID=6, Name="French Guiana" , CountryCode="GF"},
                     new Country{ContinentID=6, Name="Guyana" , CountryCode="GY"},
-                    new Country{ContinentID=6, Name="Peru" , CountryCode="PE"},
+                    new Country{ContinentID=6, Name="French Guiana" , CountryCode="GF"},
                     new Country{ContinentID=6, Name="Paraguay" , CountryCode="PY"},
+                    new Country{ContinentID=6, Name="Peru" , CountryCode="PE"},
                     new Country{ContinentID=6, Name="Suriname" , CountryCode="SR"},
                     new Country{ContinentID=6, Name="Uruguay" , CountryCode="UY"},
                     new Country{ContinentID=6, Name="Venezuela" , CountryCode="VE"},
+                    new Country{ContinentID=6, Name="Falkland Islands" , CountryCode="FK"},
 
                 };
 
