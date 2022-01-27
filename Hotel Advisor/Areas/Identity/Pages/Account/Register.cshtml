@@ -4,14 +4,14 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="align-self-center d-flex flex-column align-items-center border container-fluid col-md-5 m-auto h-75 rounded">
+<div class="align-self-center d-flex flex-column align-items-center border container-fluid col-md-5 m-auto h-85 rounded">
     <h1 class="m-5 w-75 p-2 border-bottom text-center">Create an Account</h1>
     <div class="container m-auto h-100">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="d-flex flex-column h-100 justify-content-around">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
-                <div class="form-group">
-                    <select asp-for="Input.Role" class= selectpicker form-control"> <option value ="Premium">Premium</option> <option value ="Standard">Standard</option>  </select>
+                <div class="form-group form-floating mb-2">
+                    <select asp-for="Input.Role" class="selectpicker form-control"> <option value="Standard">Standard</option> <option value="Owner">Owner</option></select>
                     <label asp-for="Input.Role"></label>  
                     <span asp-validation-for="Input.Role" class="text-danger"></span>
                 </div>
@@ -30,13 +30,13 @@
                     <label asp-for="Input.Password"></label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
-                <div class="form-floating">
+                <div class="form-floating mb-2">
                     <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
                     <label asp-for="Input.ConfirmPassword"></label>
                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 </div>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary my-auto">Register</button>
         </form>
     </div>
 </div>

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Hotel_Advisor.Data;
 
 public class Hotel_AdvisorContext : IdentityDbContext<ApplicationUser>
@@ -20,8 +19,6 @@ public class Hotel_AdvisorContext : IdentityDbContext<ApplicationUser>
     public DbSet<Review> Reviews { get; set; }
     public DbSet<ReviewLike> ReviewLikes { get; set; }
         
-    
-
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

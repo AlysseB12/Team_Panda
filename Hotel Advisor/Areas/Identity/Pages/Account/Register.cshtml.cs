@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hotel_Advisor.Areas.Identity.Pages.Account
 {
-    
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -71,7 +70,7 @@ namespace Hotel_Advisor.Areas.Identity.Pages.Account
             [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Role")]
-            [RegularExpression(@"^(Premium|Standard)$", ErrorMessage = "Select a valid role.") ]
+            [RegularExpression(@"^(Owner|Standard)$", ErrorMessage = "Select a valid role.") ]
 
             
             public string Role { get; set; }
@@ -171,8 +170,5 @@ namespace Hotel_Advisor.Areas.Identity.Pages.Account
             }
             return (IUserEmailStore<ApplicationUser>)_userStore;
         }
-
-     
-
     }
 }
