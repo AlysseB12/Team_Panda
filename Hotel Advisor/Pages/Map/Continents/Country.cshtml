@@ -1,0 +1,27 @@
+﻿@page
+@model Hotel_Advisor.Pages.Map.CountryModel
+@{
+    ViewData["Title"] = this.Model.Country.Name;
+    var continentTag = this.Model.Country.Continent.Name.ToLower().Replace(" ", "-");
+    var countryTag = $"sam{this.Model.Country.ID}";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/cssmap/cssmap-@{@continentTag}.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/cssmap/jquery.cssmap.min.js"></script>
+    <script type="text/javascript">$(document).ready(() => $("#map-@continentTag").CSSMap({ "size": 430, "mapStyle": "blue", "activateOnLoad": ["@countryTag"] }));</script>
+}
+
+<div class="flex-col justify-content-center align-items-center">
+    <div id="map-@continentTag" class="m-0">
+        <ul class="@continentTag">
+            <li class="@countryTag">
+                <a href="/Map/@this.Model.Country.Continent.ID/@this.Model.Country.ID">@this.Model.Country.Name</a>
+            </li>
+        </ul>
+    </div>
+    <div class="border border-3 rounded h-100 hotels-box"></div>
+</div>
