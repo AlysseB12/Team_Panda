@@ -30,5 +30,11 @@ namespace Hotel_Advisor.Pages.Map
 
             return Page();
         }
+
+        public string Shorten(string str)
+        {
+            if (string.IsNullOrEmpty(str) || str.Length <= 50) return str;
+            return str.Substring(0, 50) + "...";
+        }
     }
 }

@@ -14,19 +14,24 @@
 
 @section Scripts {
     <script type="text/javascript" src="~/js/cssmap/jquery.cssmap.min.js"></script>
-    <script type="text/javascript">$(document).ready(() => $("#map-@continentTag").CSSMap({ "size": 430, "mapStyle": "blue", "activateOnLoad": ["@countryTag"] }));</script>
-    <script type="text/javascript">$(document).ready(() => $("#covidInfo").click(()=>$("#covidText").toggleClass("d-none")))</script>
+    <script type="text/javascript">
+        $(document).ready(() => {
+            $("#map-@continentTag").CSSMap({ "size": 430, "mapStyle": "blue", "activateOnLoad": ["@countryTag"] });
+            $("#covidInfo").click(()=>$("#covidText").toggleClass("d-none"));
+        });
+        function hotelOnClick(hotelId) { location.href = "/Hotels/" + hotelId; }
+    </script>
 }
 
 <div class="flex-col justify-content-center align-items-center">
-    <div id="map-@continentTag" class="m-0">
+    <div id="map-@continentTag" class="m-0 d-table">
         <ul class="@continentTag">
             <li class="@countryTag">
                 <a href="/Map/@this.Model.Country.Continent.ID/@this.Model.Country.ID">@this.Model.Country.Name</a>
             </li>
         </ul>
     </div>
-    <div class="border border-3 rounded h-100 hotels-box">
+    <div class="border border-warning border-3 rounded h-100 hotels-box">
         <div class="hotel-top">
             <h1> @this.Model.Country.Name 
                 <button id="covidInfo" class="info-button">
@@ -35,9 +40,17 @@
             </h1> 
             <p id="covidText" class="covid-text d-none ">
                 Travel advice : As part of @this.Model.Country.Name's entry requirements you need to produce evidence of your Covid vaccination status and/or a negative Covid test.
-               <a href="https://www.covid19-testing.org/travel-testing" target="_blank" rel="noopener noreferrer">Please use this link to find and book your test before travelling.</a>
+                <a href="https://www.covid19-testing.org/travel-testing" target="_blank" rel="noopener noreferrer">Please use this link to find and book your test before travelling.</a>
             </p>
-            </div>
         </div>
+        @foreach (var hotel in this.Model.Hotels) {
+            <div class="d-flex m-1 border rounded cursor-pointer align-items-center">
+                <img src="~/css/images/hotel.jpg" class="m-1 w-40 h-100" />
+                <div class="d-flex flex-column" onclick="hotelOnClick(@hotel.ID)">
+                    <h5 class="m-1">@hotel.Name</h5>
+                    <div class="m-1">@Model.Shorten(hotel.Description)</div>
+                </div>
+            </div>
+        }
     </div>
 </div>
