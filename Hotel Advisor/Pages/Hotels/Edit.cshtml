@@ -15,14 +15,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Hotel.ID" />
             <div class="form-group">
-                <label asp-for="Hotel.CountryID" class="control-label"></label>
+                <label asp-for="Hotel.CountryID" class="control-label">Country</label>
                 <select asp-for="Hotel.CountryID" class="form-control" asp-items="ViewBag.CountryID"></select>
                 <span asp-validation-for="Hotel.CountryID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Hotel.UserID" class="control-label"></label>
-                <select asp-for="Hotel.UserID" class="form-control" asp-items="ViewBag.UserID"></select>
-                <span asp-validation-for="Hotel.UserID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Hotel.Name" class="control-label"></label>

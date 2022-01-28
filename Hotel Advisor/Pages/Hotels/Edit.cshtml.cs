@@ -1,13 +1,8 @@
 ﻿#nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Hotel_Advisor.Data;
 using Hotel_Advisor.Models;
 
 namespace Hotel_Advisor
@@ -39,44 +34,35 @@ namespace Hotel_Advisor
             {
                 return NotFound();
             }
-           ViewData["CountryID"] = new SelectList(_context.Countries, "ID", "ID");
-           ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id");
+
+            ViewData["CountryID"] = new SelectList(_context.Countries, "ID", "Name");
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
+            var hotel = await _context.Hotels.FindAsync(id);
+
+            if (hotel == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Hotel).State = EntityState.Modified;
-
-            try
+            if (await TryUpdateModelAsync<Hotel>(
+                    hotel,
+                    "hotel",
+                    h => h.CountryID,
+                    h => h.Name,
+                    h => h.Description,
+                    h => h.Address,
+                    h => h.City,
+                    h => h.Website,
+                    h => h.CovidSafety))
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!HotelExists(Hotel.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool HotelExists(int id)
-        {
-            return _context.Hotels.Any(e => e.ID == id);
+            return Redirect("/Hotels");
         }
     }
 }
