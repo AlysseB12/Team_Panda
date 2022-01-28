@@ -12,16 +12,29 @@
 
 @section Scripts {
     <script type="text/javascript" src="~/js/cssmap/jquery.cssmap.min.js"></script>
-    <script type="text/javascript">$(document).ready(() => $("#map-@continentTag").CSSMap({ "size": 430, "mapStyle": "blue", "activateOnLoad": ["@countryTag"] }));</script>
+    <script type="text/javascript">
+        $(document).ready(() => $("#map-@continentTag").CSSMap({ "size": 430, "mapStyle": "blue", "activateOnLoad": ["@countryTag"] }));
+        function hotelOnClick(hotelId) { location.href = "/Hotels/" + hotelId; }
+    </script>
 }
 
 <div class="flex-col justify-content-center align-items-center">
-    <div id="map-@continentTag" class="m-0">
+    <div id="map-@continentTag" class="m-0 d-table">
         <ul class="@continentTag">
             <li class="@countryTag">
                 <a href="/Map/@this.Model.Country.Continent.ID/@this.Model.Country.ID">@this.Model.Country.Name</a>
             </li>
         </ul>
     </div>
-    <div class="border border-3 rounded h-100 hotels-box"></div>
+    <div class="border border-warning border-3 rounded h-100 hotels-box">
+        @foreach (var hotel in this.Model.Hotels) {
+            <div class="d-flex m-1 border rounded cursor-pointer align-items-center">
+                <img src="~/css/images/hotel.jpg" class="m-1 w-40 h-100" />
+                <div class="d-flex flex-column" onclick="hotelOnClick(@hotel.ID)">
+                    <h5 class="m-1">@hotel.Name</h5>
+                    <div class="m-1">@Model.Truncate(hotel.Description)</div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
