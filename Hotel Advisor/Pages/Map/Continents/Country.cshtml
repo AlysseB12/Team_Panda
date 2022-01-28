@@ -48,7 +48,7 @@
                 <img src="~/css/images/hotel.jpg" class="m-1 w-40 h-100" />
                 <div class="d-flex flex-column" onclick="hotelOnClick(@hotel.ID)">
                     <h5 class="m-1">@hotel.Name</h5>
-                    <div class="m-1">@Model.Truncate(hotel.Description)</div>
+                    <div class="m-1">@Model.Shorten(hotel.Description)</div>
                 </div>
             </div>
         }

@@ -31,10 +31,10 @@ namespace Hotel_Advisor.Pages.Map
             return Page();
         }
 
-        public string Truncate(string str)
+        public string Shorten(string str)
         {
-            if (string.IsNullOrEmpty(str)) return str;
-            return str.Length <= 50 ? str : str.Substring(0, 50) + "...";
+            if (string.IsNullOrEmpty(str) || str.Length <= 50) return str;
+            return str.Substring(0, 50) + "...";
         }
     }
 }
