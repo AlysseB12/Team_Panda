@@ -8,11 +8,14 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/cssmap/cssmap-@{@continentTag}.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Hotel_Advisor.styles.css" asp-append-version="true" />
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css' asp-append-version="true"> 
 }
 
 @section Scripts {
     <script type="text/javascript" src="~/js/cssmap/jquery.cssmap.min.js"></script>
     <script type="text/javascript">$(document).ready(() => $("#map-@continentTag").CSSMap({ "size": 430, "mapStyle": "blue", "activateOnLoad": ["@countryTag"] }));</script>
+    <script type="text/javascript">$(document).ready(() => $("#covidInfo").click(()=>$("#covidText").toggleClass("d-none")))</script>
 }
 
 <div class="flex-col justify-content-center align-items-center">
@@ -23,5 +26,18 @@
             </li>
         </ul>
     </div>
-    <div class="border border-3 rounded h-100 hotels-box"></div>
+    <div class="border border-3 rounded h-100 hotels-box">
+        <div class="hotel-top">
+            <h1> @this.Model.Country.Name 
+                <button id="covidInfo" class="info-button">
+                    <i class="bi bi-exclamation-circle-fill info-icon info-button"></i>
+                </button>
+            </h1> 
+            <p id="covidText" class="covid-text d-none ">
+                Travel advice : As part of @this.Model.Country.Name's entry requirements you need to produce evidence of your Covid vaccination status and/or a negative Covid test.
+               <a href="https://www.covid19-testing.org/travel-testing" target="_blank" rel="noopener noreferrer">Please use this link to find and book your test before travelling.</a>
+            </p>
+            </div>
+        </div>
+    </div>
 </div>
