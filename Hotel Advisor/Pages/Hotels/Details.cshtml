@@ -5,42 +5,43 @@
     ViewData["Title"] = "Details";
 }
 
-
 <div class="flex-col">
     <div>
         <img src="~/css/images/hotel.jpg" class=" m-2" />
     </div>
     <div>
-            <dl class="row m-2">
-                <h1>@this.Model.Hotel.Name</h1>
-                    <hr />
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Hotel.Address), @Html.DisplayFor(model => model.Hotel.City), @Html.DisplayFor(model => model.Hotel.Country.Name)
-                </dd>
-                <dd class="col-sm-10">
-                    <a href="@this.Model.Hotel.Website" target="_blank" rel="noopener noreferrer">@this.Model.Hotel.Website</a>
-                </dd>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Hotel.Description)
-                </dd>
-            </dl>
-            <div class="flex-col">
-                <div class="m-1 border rounded align-items-center w-50">
-                    <ul class="m-2 list"> <h6>Covid Safety Measures</h6>
-                    @foreach (var items in Model.Hotel.CovidSafety.Split(","))
-                    {
-                       <li>@($"{items}")</li>
-                    }
-                    </ul>
-                </div>
-                <div class="m-1 border rounded align-items-center w-50">
-                    <ul class="m-2 list"> <h6>Average reviews</h6>
-                        <li>Value</li>
-                        <li>Location</li>
-                        <li>Services</li>
-                    </ul>
-                </div>
+        <h1 class="m-2">@this.Model.Hotel.Name</h1>
+        <hr />
+        <dl class="row m-2">
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Hotel.Address), @Html.DisplayFor(model => model.Hotel.City), @Html.DisplayFor(model => model.Hotel.Country.Name)
+            </dd>
+            <dd class="col-sm-10">
+                <a href="@this.Model.Hotel.Website" target="_blank" rel="noopener noreferrer">@this.Model.Hotel.Website</a>
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Hotel.Description)
+            </dd>
+        </dl>
+        <div class="flex-col">
+            <div class="m-1 border rounded align-items-center w-50">
+                <h6 class="m-2">Covid Safety Measures</h6>
+                <ul class="m-2 list">
+                @foreach (var items in Model.Hotel.CovidSafety.Split("\r\n"))
+                {
+                    <li>@($"{items}")</li>
+                }
+                </ul>
             </div>
+            <div class="m-1 border rounded align-items-center w-50">
+                <h6 class="m-2">Average reviews</h6>
+                <ul class="m-2 list">
+                    <li>Value</li>
+                    <li>Location</li>
+                    <li>Services</li>
+                </ul>
+            </div>
+        </div>
      </div>
 </div>
 <div class="m-1 p-2 border rounded align-items-center"> 
