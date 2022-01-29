@@ -19,6 +19,10 @@ html {
 
 }
 
+.hotel-textarea {
+    height: 6.2em !important;
+}
+
 .info-button {
     background: none;
     color: inherit;
