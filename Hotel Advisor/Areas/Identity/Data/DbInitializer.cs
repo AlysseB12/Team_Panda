@@ -94,7 +94,7 @@ namespace Hotel_Advisor.Areas.Identity.Data
                     Address="Largo Vespasiano Julio Veppo 77, Center",
                     City="Porto Alegre",
                     Website="https://www.Bem-vida-Casa.com",
-                    CovidSafety="Masks are mandatory while moving around the hotel, Sanitary stations throughout, Extra routine cleaning."},
+                    CovidSafety="Masks are mandatory while moving around the hotel\r\nSanitary stations throughout\r\nExtra routine cleaning."},
                 new Hotel{
                     CountryID= 3,
                     UserID= "a93f6a42-1b45-4e9b-805c-ae73b79d6cd3" ,
@@ -103,7 +103,7 @@ namespace Hotel_Advisor.Areas.Identity.Data
                     Address="Largo Vespasiano Julio Veppo 77, Center",
                     City="Brasilia",
                     Website="https://www.hotel-brazilia.com",
-                    CovidSafety="Masks are mandatory while moving around the hotel, Sanitary stations throughout, Extra routine cleaning."},
+                    CovidSafety="Masks are mandatory while moving around the hotel\r\nSanitary stations throughout\r\nExtra routine cleaning."},
                 new Hotel{
                     CountryID= 3,
                     UserID= "a93f6a42-1b45-4e9b-805c-ae73b79d6cd3" ,
@@ -112,7 +112,7 @@ namespace Hotel_Advisor.Areas.Identity.Data
                     Address="Av. Atlântica, 1020 - Copacabana",
                     City="Rio de Janeiro",
                     Website="https://www.hilton.com/en/hotels/riocchh-hilton-rio-de-janeiro-copacabana",
-                    CovidSafety="Masks are mandatory while moving around the hotel, Sanitary stations throughout, Extra routine cleaning."}
+                    CovidSafety="Masks are mandatory while moving around the hotel\r\nSanitary stations throughout\r\nExtra routine cleaning."}
             };
 
             context.Hotels.AddRange(Hotels);
