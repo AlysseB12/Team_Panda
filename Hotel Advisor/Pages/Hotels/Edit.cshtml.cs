@@ -4,16 +4,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Hotel_Advisor.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Hotel_Advisor
 {
+    [Authorize(Roles = "Owner")]
     public class EditModel : PageModel
     {
         private readonly Hotel_Advisor.Data.Hotel_AdvisorContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public EditModel(Hotel_Advisor.Data.Hotel_AdvisorContext context)
+        public EditModel(Hotel_Advisor.Data.Hotel_AdvisorContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -33,6 +38,10 @@ namespace Hotel_Advisor
             if (Hotel == null)
             {
                 return NotFound();
+            }
+            else if (!_userManager.GetUserId(HttpContext.User).Equals(Hotel.UserID))
+            {
+                return Unauthorized();
             }
 
             ViewData["CountryID"] = new SelectList(_context.Countries, "ID", "Name");

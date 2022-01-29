@@ -26,6 +26,7 @@ namespace Hotel_Advisor.Models
         [DataType(DataType.Url)]
         public string Website { get; set; }
         [Required]
+        [Display(Name = "Covid Safety")]
         public string CovidSafety { get; set; }
         public ICollection<Review>? Reviews { get; set; }
 
