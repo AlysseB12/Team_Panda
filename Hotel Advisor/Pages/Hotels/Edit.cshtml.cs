@@ -41,7 +41,7 @@ namespace Hotel_Advisor
             }
             else if (!_userManager.GetUserId(HttpContext.User).Equals(Hotel.UserID))
             {
-                return Unauthorized();
+                return Forbid();
             }
 
             ViewData["CountryID"] = new SelectList(_context.Countries, "ID", "Name");
