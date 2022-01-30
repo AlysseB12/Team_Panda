@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Hotel_Advisor.Data;
 using Hotel_Advisor.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Hotel_Advisor
 {
+    [Authorize(Roles = "Owner")]
     public class DeleteModel : PageModel
     {
         private readonly Hotel_Advisor.Data.Hotel_AdvisorContext _context;
