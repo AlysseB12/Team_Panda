@@ -43,6 +43,10 @@ html {
 
 }
 
+.hotel-image {
+    width: 96%
+}
+
 @media (min-width: 1200px) {
     html {
         font-size: 16px;
@@ -54,6 +58,10 @@ html {
 
     .hotels-box {
         width: 30%
+    }
+
+    .hotel-image {
+        width: auto
     }
 }
 
